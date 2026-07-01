@@ -289,9 +289,14 @@ app.post("/user/enroll", async(req, res) => {
     await prisma.enrollments.create({
         data : {
             userId : Number(userId),
+            
             courseId : data.courseId
 
         }
+    })
+
+    res.json({
+        message : "Enrolled succesfully!"
     })
 
 })

@@ -16,6 +16,31 @@ export function CourseContent(){
     const {courseId} = useParams();
     const [contents, setContents ] = useState<ContentItem[]>([])
     const [loading, setLoading ] = useState(false)
+    const [isEnrolled, setisEnrolled] = useState(true)
+
+    async function handleEnroll()
+    {
+        try
+        {
+            {
+                await api.post("/user/enroll",{
+                    courseId : Number(courseId)
+                })
+            }
+
+            alert("Successfully enrolled in the course!")
+
+            setisEnrolled(true)
+        }
+        catch(error)
+        {
+            console.log(error)
+            alert("failed to enroll!")
+        }
+        
+
+    }
+
     useEffect(() => {
         async function fetchContent()
         {
@@ -24,9 +49,17 @@ export function CourseContent(){
                 const response = await api.get(`/user/course/content/${courseId}`)
                 setContents(response.data.content)
             }  
-            catch(error)
+            catch(error :any)
             {
-                console.error(error)
+                if (error.response.status === 403)
+                {
+                    setisEnrolled(false);
+                }
+                else
+                {
+                    alert("FAILED TO LOAD CONTENT!")
+                }
+
             } 
             finally
             {
@@ -34,13 +67,22 @@ export function CourseContent(){
             }
         }
         fetchContent()
-    },[])
+    },[courseId,isEnrolled])
     
     if (loading)
     {
         return (
             <div>
                 Loading course content..
+            </div>
+        )
+    }
+    if (!isEnrolled)
+    {
+        return(
+            <div>
+                <h2>You are not enrolled in this course, to enroll click 👇👇👇</h2>
+                <button onClick = {handleEnroll}>Enroll Now</button>
             </div>
         )
     }
