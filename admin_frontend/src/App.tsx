@@ -1,23 +1,25 @@
 import { APITester } from "./APITester";
 import "./index.css";
 
-import logo from "./logo.svg";
-import reactLogo from "./react.svg";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/home";
+import AddCourse from "./pages/AddCourse";
+import Analytics from "./pages/Analytics";
+import EditCourse from "./pages/EditCourse";
+import Signin from "./pages/Signin";
 
 export function App() {
   return (
-    <div className="app">
-      <div className="logo-container">
-        <img src={logo} alt="Bun Logo" className="logo bun-logo" />
-        <img src={reactLogo} alt="React Logo" className="logo react-logo" />
-      </div>
-
-      <h1>Bun + React</h1>
-      <p>
-        Edit <code>src/App.tsx</code> and save to test HMR
-      </p>
-      <APITester />
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path = "/" element = {<Home/>}/>
+      <Route path = "/Signin" element = {<Signin/}/>
+      <Route path = "/AddCourse" element = {<AddCourse/>}/>
+      <Route path = "/Analytics" element = {<Analytics/>}/>
+      <Route path = "/EditCourse" element = {<EditCourse/>}/>
+    </Routes>
+    </BrowserRouter>
+    
   );
 }
 
