@@ -2,6 +2,13 @@ import React from 'react'
 
 export default function Home() {
   return (
-    <div>Home</div>
+    <div style ={{display : "flex",
+            flexDirection : "column",
+            gap : "20px",
+            alignItems:"center"}}
+          >
+      <h1>Welcome to the Admin Dashboard</h1>
+              
+    </div>
   )
 }
