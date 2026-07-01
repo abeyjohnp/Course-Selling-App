@@ -15,6 +15,7 @@ export default function Home() {
         <button onClick={()=> navigate("/Analytics")}>ANALYTICS</button>
         <button onClick={()=> navigate("/AddCourse")}>ADD COURSE</button>
         <button onClick={()=> navigate("/EditCourse")}>EDIT COURSE</button>
+        <button onClick={()=> navigate("/AddCourseContent")}>ADD COURSE CONTENT</button>
       </div>     
     </div>
   )
