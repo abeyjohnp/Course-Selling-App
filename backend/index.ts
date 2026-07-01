@@ -1,10 +1,13 @@
 import {prisma} from "./db"
 import jwt from "jsonwebtoken"
 import express from "express"
+import cors from "cors"
 
 import { CreateCourseSchema, SignupSchema, UpdateCourseSchema , ContentSchema, EnrollCourseSchema} from "./types"
 
 const app =  express()
+app.use(cors())
+app.use(express.json())
 
 app.post("/admin/signin", async (req, res) => {
     const {success, data} = SignupSchema.safeParse(req.body);
@@ -253,7 +256,12 @@ app.get("/user/courses", async(req, res) => {
         return 
     }
 
-    const allCourses = await prisma.courses.findMany();
+    const allCourses = await prisma.courses.findMany({
+        orderBy :
+        {
+            id: "asc"
+        }
+    });
     res.json({
         courses: allCourses
     });
@@ -290,7 +298,7 @@ app.post("/user/enroll", async(req, res) => {
 
 app.get("/user/course/content/:courseId", async (req, res) => {
     const token = req.headers.token as string;
-    const userId = jwt.verify(token, process.env.JWT_SECRET as string);
+    const userId = jwt.verify(token, "admin_jwt_secret_123llala");
     if (!userId) {
         res.status(403).json({
             message: "Incorrect token"
@@ -321,4 +329,7 @@ app.get("/user/course/content/:courseId", async (req, res) => {
         content
     });
 });
-app.listen(3000);
+app.listen(3001, () =>
+{
+    console.log("Backend is running successfully!")
+});

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api=axios.create({
-  baseURL:"http://localhost:3000",
+  baseURL:"http://localhost:3001", 
 });
 
 api.interceptors.request.use(
@@ -9,8 +9,8 @@ api.interceptors.request.use(
 const token=localStorage.getItem("token");
 
 if (token) {
-config.headers.Authorization=`Bearer${token}`;
-    }
+  config.headers.token=token;
+}
 
 return config;
   },

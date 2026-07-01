@@ -6,10 +6,10 @@ export function Home()
 
     function handleClick()
     {
-        navigate("/signin")
+        navigate("/signup")
     }
     return(
-        <div>
+        <div>   
             <h1>Home</h1>
             <button onClick = {handleClick}>Go To Login</button>
         </div>

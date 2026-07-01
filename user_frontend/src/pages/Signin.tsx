@@ -1,12 +1,33 @@
 import React from 'react'
 import {useState} from "react"
-
+import api from "../api/api"
+import { useNavigate } from 'react-router-dom'
 export default function Signin() {
   const [username, setUsername ] = useState("")
   const [password, setPassword ] = useState("")
-  function handleSignin()
+  const [loading, setLoading] = useState(false)
+
+  const navigate = useNavigate()
+
+  async function handleSignin()
   {
-    console.log(username, password)
+    setLoading(true)
+    try
+    {
+      let data  = {username, password}
+      let response = await api.post("/user/signin",data)
+      localStorage.setItem("token",response.data.token)
+      alert("Signin Successfull")
+      navigate("/viewcourses")
+    }
+    catch(error)
+    {
+      alert("Please Sign up")
+    }
+    finally
+    {
+      setLoading(false)
+    }
   }
 
   return(
@@ -19,7 +40,7 @@ export default function Signin() {
         <label>Password</label>
         <input type="password" value={password} onChange = {(e) => setPassword(e.target.value)}/>
       </div>
-      <button onClick = {handleSignin}>Signin</button>
+      <button disabled={loading} onClick = {handleSignin}>{loading ? "loading..." : "Signup"}</button>
     </div>
   )
 }

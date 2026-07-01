@@ -1,19 +1,24 @@
 import React from 'react'
 import {useState} from "react"
 import api from "../api/api"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Signup() {
   const [username, setUsername ] = useState("")
   const [password, setPassword ] = useState("")
   const [loading, setLoading] = useState(false)
 
+
+  const navigate =  useNavigate()
+
   async function handleSignup()
   {
     setLoading(true)
     try {
       let data = {username, password}
-      let response = await api.post("/api/user/signup", data)
+      let response = await api.post("/user/signup", data)
+      alert("Sign up is succesfull! Please sign in!")
+      navigate("/signin")
     } catch (err) {
       console.error(err)
     } finally {
