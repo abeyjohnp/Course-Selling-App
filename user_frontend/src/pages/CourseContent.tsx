@@ -81,7 +81,7 @@ export function CourseContent(){
     {
         return(
             <div>
-                <h2>You are not enrolled in this course, to enroll click 👇👇👇</h2>
+                <h2>You are not enrolled in this course, to enroll click </h2>
                 <button onClick = {handleEnroll}>Enroll Now</button>
             </div>
         )

@@ -9,7 +9,12 @@ export function Home()
         navigate("/signup")
     }
     return(
-        <div>   
+        <div style={{
+            display : "flex",
+            flexDirection : "column",
+            gap : "20px",
+            alignItems:"center"
+        }}>   
             <h1>Home</h1>
             <button onClick = {handleClick}>Go To Login</button>
         </div>

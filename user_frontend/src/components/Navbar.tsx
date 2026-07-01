@@ -7,8 +7,10 @@ export default function Navbar() {
         display : "flex",
         gap : "20px",
         padding : "20px",
-        borderBottom : "1px solid gray"
+        borderBottom : "1px solid gray",
+        alignItems : "center"
     }}>
+        <h2 style={{color:"red"}}>The Course App</h2>
         <Link to="/">Home</Link>
         <Link to="/viewcourses">Courses</Link>
     </div>
