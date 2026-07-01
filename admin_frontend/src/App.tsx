@@ -7,6 +7,7 @@ import AddCourse from "./pages/AddCourse";
 import Analytics from "./pages/Analytics";
 import EditCourse from "./pages/EditCourse";
 import Signin from "./pages/Signin";
+import AllCourses from "./pages/AllCourses";
 
 export function App() {
   return (
@@ -17,6 +18,7 @@ export function App() {
       <Route path = "/AddCourse" element = {<AddCourse/>}/>
       <Route path = "/Analytics" element = {<Analytics/>}/>
       <Route path = "/EditCourse" element = {<EditCourse/>}/>
+      <Route path = "/AllCourses" element = {<AllCourses/>}/>
     </Routes>
     </BrowserRouter>
     
