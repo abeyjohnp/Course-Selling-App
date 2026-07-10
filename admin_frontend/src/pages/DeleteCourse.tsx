@@ -27,31 +27,29 @@ export default function DeleteCourse() {
   }
 
   return (
-    <div style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "20px",
-        alignItems: "center",
-        padding: "40px"
-    }}>
-        <h1>THE DELETE COURSE PAGE</h1>
-        <div>
-            <label>Course ID TO DELETE : </label>
-            <input 
-                type = "number"
-                value = {courseId}
-                placeholder='Enter ID number'
-                onChange={(e) => setCourseId(e.target.value)}
-                style = {{
-                    padding : "8px",
-                    borderRadius : "4px"
-                }}
-            />
+    <div className="form-container">
+        <div className="form-card">
+            <h1>THE DELETE COURSE PAGE</h1>
+            <div className="input-group">
+                <label>Course ID TO DELETE : </label>
+                <input 
+                    type = "number"
+                    value = {courseId}
+                    placeholder='Enter ID number'
+                    onChange={(e) => setCourseId(e.target.value)}
+                    style = {{
+                        padding : "8px",
+                        borderRadius : "4px"
+                    }}
+                />
+            </div>
+            <button
+            disabled = {loading}
+            onClick={handleDelete}
+            className="delete-btn"
+            >{loading ? "DELETING...." : "DELETE COURSE"}</button>
         </div>
-        <button
-        disabled = {loading}
-        onClick={handleDelete}
-        >{loading ? "DELETING...." : "DELETE COURSE"}</button>
+        
     </div>
   )
   

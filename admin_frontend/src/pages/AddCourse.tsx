@@ -27,24 +27,24 @@ export default function AddCourse() {
 
   return (
     
-    <div style ={{display : "flex",
-            flexDirection : "column",
-            gap : "20px",
-            alignItems:"center"}} >
-      <h1>THE ADD COURSE PAGE</h1>
-      <div>
-          <label>Title </label>
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}></input>
+   <div className="form-container">
+      <div className="form-card">
+        <h1>THE ADD COURSE PAGE</h1>
+        <div className="input-group">
+            <label>Title </label>
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}></input>
+        </div>
+        <div className="input-group">
+          <label>Description </label>
+          <input type="text" value={description} onChange={(e) => setDescription(e.target.value)}></input>
+        </div>
+        <div className="input-group">
+          <label>Thumbnail </label>
+          <input type="text" value={thumbnail} onChange={(e) => setThumbnail(e.target.value)}></input>
+        </div>
+        <button  onClick={handleClick}> Create New Course </button>
       </div>
-      <div>
-        <label>Description </label>
-        <input type="text" value={description} onChange={(e) => setDescription(e.target.value)}></input>
-      </div>
-      <div>
-        <label>Thumbnail </label>
-        <input type="text" value={thumbnail} onChange={(e) => setThumbnail(e.target.value)}></input>
-      </div>
-      <button  onClick={handleClick}> Create New Course </button>
+      
     </div>
     
   )

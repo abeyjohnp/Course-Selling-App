@@ -215,3 +215,59 @@ body {
   border-radius: 6px;
   border: 1px solid #334155;
 }
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0f172a;
+  padding: 40px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.form-card {
+  background-color: #1e293b;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 500px;
+  color: #ffffff;
+}
+
+.form-card h1 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.form-card button {
+  width: 100%;
+  background-color: #3b82f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-top: 10px;
+}
+
+.form-card button:hover {
+  background-color: #2563eb;
+}
+
+.form-card button:active {
+  transform: scale(0.98);
+}
+.form-card button.delete-btn {
+  background-color: #ef4444;
+}
+
+.form-card button.delete-btn:hover {
+  background-color: #dc2626;
+}
