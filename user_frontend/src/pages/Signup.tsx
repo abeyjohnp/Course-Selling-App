@@ -27,21 +27,21 @@ export default function Signup() {
   }
 
   return(
-    <div style ={{display : "flex",
-            flexDirection : "column",
-            gap : "20px",
-            alignItems:"center"}}>
-      <h1>SIGNUP PAGE</h1>
-      <div>
-        <label>Username </label>
-        <input type="text" value={username} onChange = {(e) => setUsername(e.target.value)}/>
+    <div className="form-container">
+      <div className="form-card">
+        <h1>SIGNUP PAGE</h1>
+        <div className="input-group">
+          <label>Username </label>
+          <input type="text" value={username} onChange = {(e) => setUsername(e.target.value)}/>
+        </div>
+        <div className="input-group">
+          <label>Password </label>
+          <input type="password" value={password} onChange = {(e) => setPassword(e.target.value)}/>
+        </div>
+        <button onClick = {handleSignup} disabled={loading}>{loading ? "loading..." : "Signup"}</button>
+        <p>Already have an account ? <Link to="/signin">Signin</Link></p>
       </div>
-      <div>
-        <label>Password </label>
-        <input type="password" value={password} onChange = {(e) => setPassword(e.target.value)}/>
-      </div>
-      <button onClick = {handleSignup} disabled={loading}>{loading ? "loading..." : "Signup"}</button>
-      <p>Already have an account ? <Link to="/signin">Signin</Link></p>
+      
     </div>
   )
 }

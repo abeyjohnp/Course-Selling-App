@@ -31,21 +31,21 @@ export default function Signin() {
   }
 
   return(
-    <div style ={{display : "flex",
-            flexDirection : "column",
-            gap : "20px",
-            alignItems:"center"}}>
-      <h1>SIGNIN PAGE</h1>
-      <div >
+    <div className="form-container">
+      <div className="form-card">
+        <h1>SIGNIN PAGE</h1>
+        <div className="input-group">
 
-        <label>Username </label>
-        <input type="text" value={username} onChange = {(e) => setUsername(e.target.value)}/>
-      </div>
-      <div>
-        <label>Password </label>
-        <input type="password" value={password} onChange = {(e) => setPassword(e.target.value)}/>
-      </div>
-      <button disabled={loading} onClick = {handleSignin}>{loading ? "loading..." : "Signin"}</button>
+          <label>Username </label>
+          <input type="text" value={username} onChange = {(e) => setUsername(e.target.value)}/>
+        </div>
+        <div className="input-group">
+          <label>Password </label>
+          <input type="password" value={password} onChange = {(e) => setPassword(e.target.value)}/>
+        </div>
+          <button disabled={loading} onClick = {handleSignin}>{loading ? "loading..." : "Signin"}</button>
+        </div>
+      
     </div>
   )
 }

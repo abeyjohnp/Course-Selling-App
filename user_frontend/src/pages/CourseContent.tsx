@@ -80,33 +80,45 @@ export function CourseContent(){
     if (!isEnrolled)
     {
         return(
-            <div>
-                <h2>You are not enrolled in this course, to enroll click </h2>
-                <button onClick = {handleEnroll}>Enroll Now</button>
+            <div className="form-container">
+                <div className="form-card" style={{ textAlign: "center" }}>
+                    <h2>Not Enrolled Yet! </h2>
+                    <p style={{ margin: "20px 0" }}>
+            You are not enrolled in this course yet. Enroll today to access all video lectures and files!
+          </p>
+                    <button onClick = {handleEnroll}>Enroll Now</button>
+                </div>
+                
             </div>
         )
     }
     else
     {
         return(
-            <div>
-            <h1>Course Content</h1>
-                {contents.length === 0 ? 
-                    <div> No Content yet </div> :
-                    <div>
-                    {
-                        contents.map((content) => (
-                            <div key = {content.id} style={{border : "1px solid black", padding: "16px", margin : "10px"}}>
-                                <h3>{content.title}</h3>
-                                <ReactPlayer
-                                    width="400px"
-                                    height={300}
-                                    src={content.videoUrl} />
-                            </div>
-                        ))
+            <div className="form-container">
+                <div className="content-card">
+                    <h1>Course Content</h1>
+                    {contents.length === 0 ? 
+                        <div className="no-content-message"> No Content yet </div> :
+                        <div>
+                        {
+                            contents.map((content) => (
+                                <div key = {content.id}  className="lecture-card">
+                                    <h3>{content.title}</h3>
+                                    <div className="video-player-container">
+                                    <ReactPlayer
+                                        width="400px"
+                                        height={300}
+                                        src={content.videoUrl} />
+                                        
+                                    </div>
+                                </div>
+                            ))
+                        }
+                        </div>
                     }
-                    </div>
-                }
+                </div>
+            
                 
             </div>
         )

@@ -52,19 +52,26 @@ export function ViewCourses()
     }
 
     return (
-        <>
-            <h1>View Courses</h1>
+        <div className="catalog-container">
+            <h1 className="catalog-title">Explore Courses</h1>
+            <div className="catalog-grid">
             {courses.map((course)=>(
-                <div key={course.id} style={{ border : "1px solid gray", padding : "10px", margin : "10px"}}>
-                    <h3>{course.title}</h3>
-                    <img src={course.thumbnail} width = "300px"/>
-                    <p>{course.description}</p>
-                    <button onClick = {() => goto(course.id)}>
+                <div key={course.id} className="course-card">
+
+                    <img src={course.thumbnail} className="course-thumbnail" />
+
+                    <div className="course-body">
+                        <h3 className="course-title">{course.title}</h3>
+                        <p className="course-description">{course.description}</p>
+                        <button onClick = {() => goto(course.id)}>
                         Go to course {course.id}
                     </button>
+                    </div>
+                    
                 </div>
             ))}
-        </>
+            </div>
+        </div>
     )
 
 
