@@ -9,18 +9,20 @@ import EditCourse from "./pages/EditCourse";
 import Signin from "./pages/Signin";
 import AllCourses from "./pages/AllCourses";
 import AddCourseContent from "./pages/AddCourseContent";
+import DeleteCourse from "./pages/DeleteCourse";
 
 export function App() {
   return (
     <BrowserRouter>
     <Routes>
       <Route path = "/home" element = {<Home/>}/>
-      <Route path = "/Signin" element = {<Signin/>}/>
+      <Route path = "/" element = {<Signin/>}/>
       <Route path = "/AddCourse" element = {<AddCourse/>}/>
       <Route path = "/AddCourseContent" element = {<AddCourseContent/>}/>
       <Route path = "/Analytics" element = {<Analytics/>}/>
       <Route path = "/EditCourse" element = {<EditCourse/>}/>
       <Route path = "/AllCourses" element = {<AllCourses/>}/>
+      <Route path = "/DeleteCourses" element = {<DeleteCourse/>}/>
     </Routes>
     </BrowserRouter>
     

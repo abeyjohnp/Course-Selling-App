@@ -172,6 +172,61 @@ app.get("/admin/courses", async(req, res) => {
     res.json(courseslist)
 })
 
+app.delete("/admin/courses/:courseId", async(req,res) => {
+    const token = req.headers.token as string;
+    const userId = jwt.verify(token,"admin_jwt_secret_123llala");
+
+    if (!userId)
+    {
+        res.status(403).json({
+            message : "Incorrect token"
+        });
+        return;
+    }
+
+    const courseId = Number(req.params.courseId)
+    try
+    {
+        await prisma.courseContent.deleteMany(
+            {
+                where:
+                {
+                    courseId : courseId
+                }
+            }
+        )
+
+
+        await prisma.enrollments.deleteMany({
+            where: {
+                courseId : courseId
+            }
+        })
+
+        await prisma.courses.delete(
+            {
+                where : 
+                {
+                    id : courseId
+                }
+            }
+        )
+
+        res.json({
+            message: "Course and all its associated content deleted successfully!"
+        });
+    }
+
+    catch(error)
+    {
+        res.status(500).json({
+            message : "Something went wrong while deletion!"
+        })
+    }
+
+    
+})
+
 //// USER ENDPOINTS
 app.post("/user/signup", async (req, res) => {
     const {success, data} = SignupSchema.safeParse(req.body);

@@ -45,18 +45,23 @@ export default function AllCourses() {
     }
 
     return (
-        <div style ={{display : "flex",
-                flexDirection : "column",
-                gap : "20px",
-                alignItems:"center"}}>
-            <h1>ALL COURSES CURRENTLY LIVE</h1>
-            {courses.map((course)=>(
-                <div key={course.id} style={{ border : "1px solid gray", padding : "10px", margin : "10px"}}>
-                    <h3>{course.title}</h3>
-                    <img src={course.thumbnail} width = "300px"/>
-                    <p>{course.description}</p>
+        <div className="catalog-container">
+            <h1 className = "catalog-title">ALL COURSES CURRENTLY LIVE</h1>
+            <div className="catalog-grid">
+                {courses.map((course)=>(
+                <div key={course.id} className='course-card'>
+                    <img src={course.thumbnail} className = "course-thumbnail"/>
+                    <div className="course-body">
+                        <h3 className="course-title">{course.title}</h3>
+                        <p className="course-description">{course.description}</p>
+                    </div>
+                    <div className="course-id-tag">
+                        ID: {course.id}
+                    </div>
                 </div>
-            ))}
+                ))}
+            </div>
+            
         </div>
     )
 }
